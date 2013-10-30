@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from df_account.forms import ExRegistrationForm
+from django.shortcuts import render, HttpResponse
+from df_account.forms import UserRegistrationForm
 
 
 def landing(request):
-    if not request.user.is_authenticated():
-        return render(request, 'base_not_logged_in.html', dict(form_registration=ExRegistrationForm()))
+    if request.user.is_authenticated():
+        return HttpResponse("loggedin")
+    else:
+        return render(request, 'base_not_logged_in.html', dict(form_registration=UserRegistrationForm()))

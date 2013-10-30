@@ -4,7 +4,7 @@ from django.conf import settings
 from registration.signals import user_registered
 
 
-class ExUserProfile(models.Model):
+class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
     race = models.CharField(max_length=1, choices=settings.RACE_CHOICES)
 
@@ -36,7 +36,7 @@ class ExUserProfile(models.Model):
 
 
 def user_registered_callback(sender, user, request, **kwargs):
-    profile = ExUserProfile(user=user)
+    profile = UserProfile(user=user)
     profile.race = request.POST["race"]
     profile.save()
 
