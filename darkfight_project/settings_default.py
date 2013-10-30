@@ -42,7 +42,7 @@ TIME_ZONE = 'Europe/Istanbul'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'tr'
 
 SITE_ID = 1
 
@@ -192,5 +192,5 @@ EMAIL_HOST_PASSWORD = '94649464'
 
 RACE_CHOICES = (
     ('v', 'Vampir Lordu'),
-    ('w', 'Alfa Werewolf'),
+    ('w', 'Alfa Kurtadam'),
 )

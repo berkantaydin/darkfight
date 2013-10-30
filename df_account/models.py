@@ -22,6 +22,8 @@ class ExUserProfile(models.Model):
     health_now = models.PositiveIntegerField(default=1)
     health_max = models.PositiveIntegerField(default=1)
 
+    gold = models.PositiveIntegerField(default=1)
+
     unused_point = models.IntegerField(default=0)
     energy_point = models.IntegerField(default=1)
     stamina_point = models.IntegerField(default=1)
@@ -30,12 +32,12 @@ class ExUserProfile(models.Model):
     shield_point = models.IntegerField(default=1)
 
     def __unicode__(self):
-        return self.user
+        return unicode(self.user)
 
 
 def user_registered_callback(sender, user, request, **kwargs):
     profile = ExUserProfile(user=user)
-    profile.is_human = (request.POST["is_human"])
+    profile.race = request.POST["race"]
     profile.save()
 
 

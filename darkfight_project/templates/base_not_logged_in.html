@@ -69,19 +69,22 @@
         <div class="col-lg-4">
             <h2>Vampir Lordu</h2>
 
-            <p>Kana susamış bir vahşidir. İnsanların kanını içerek hayatta kalır. Uzun yıllar yaşadıkları için çok tecrübeli yaratıklardır. Kanın kutsallığına inanırlar. Kan ile beslenerek çok çabuk iyileşirler.</p>
+            <p>Kana susamış bir vahşidir. İnsanların kanını içerek hayatta kalır. Uzun yıllar yaşadıkları için çok
+                tecrübeli yaratıklardır. Kanın kutsallığına inanırlar. Kan ile beslenerek çok çabuk iyileşirler.</p>
         </div>
 
         <div class="col-lg-4">
             <h2>Alfa Kurtadam</h2>
 
-            <p>Alfalar gelişmiş bir hiyerarşi bilincine sahiptirler. Alfa seviye bir kurtadam karşısında hayatta kalmaya çalışmak aptallıktır. İnsanların koruyucuları ve en sadık dostlarıdırlar.</p>
+            <p>Alfalar gelişmiş bir hiyerarşi bilincine sahiptirler. Alfa seviye bir kurtadam karşısında hayatta kalmaya
+                çalışmak aptallıktır. İnsanların koruyucuları ve en sadık dostlarıdırlar.</p>
         </div>
 
         <div class="col-lg-4">
             <h2>Hemen Kayıt Ol</h2>
             <table>
                 <form action="{% url 'registration_register' %}" method="post">
+                    {% csrf_token %}
                     {% for item in form_registration %}
                         <tr>
                             <td><b>{{ item.label }}</b></td>
@@ -90,7 +93,8 @@
                     {% endfor %}
                     <tr>
                         <td></td>
-                        <td><br/><br/><input class="btn btn-success" type="submit" value="Doğrulama mailini gönder"/></td>
+                        <td><br/><br/><input class="btn btn-success" type="submit" value="Doğrulama mailini gönder"/>
+                        </td>
                     </tr>
             </table>
             </form>
