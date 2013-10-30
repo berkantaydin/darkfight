@@ -35,24 +35,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">darkFight</a>
+            <a class="navbar-brand" href="{% url 'base_landing' %}">darkFight</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" method="post" action="{% url 'registration_register' %}">
+            <form class="navbar-form navbar-right" method="post" action="{% url 'auth_login' %}">
                 {% csrf_token %}
+                <input type="hidden" name="next" value="{% url 'base_landing' %}">
+
                 <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
+                    <input name="username" type="text" placeholder="kullanıcı adı" class="form-control">
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input name="password" type="password" placeholder="şifre" class="form-control">
                 </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
+                <button type="submit" class="btn btn-success">Giriş</button>
+                {% url 'auth_password_reset' as auth_pwd_reset_url %}
+                {% blocktrans %}<a href="{{ auth_pwd_reset_url }}">Şifremi Unuttum</a>{% endblocktrans %}
             </form>
         </div>
         <!--/.navbar-collapse -->
     </div>
 </div>
-
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
@@ -66,39 +69,44 @@
     <!-- Example row of columns -->
     <div class="row">
 
-        <div class="col-lg-4">
-            <h2>Vampir Lordu</h2>
+        {% block content %}
+            <div class="col-lg-4">
+                <h2>Vampir Lordu</h2>
 
-            <p>Kana susamış bir vahşidir. İnsanların kanını içerek hayatta kalır. Uzun yıllar yaşadıkları için çok
-                tecrübeli yaratıklardır. Kanın kutsallığına inanırlar. Kan ile beslenerek çok çabuk iyileşirler.</p>
-        </div>
+                <p>Kana susamış bir vahşidir. İnsanların kanını içerek hayatta kalır. Uzun yıllar yaşadıkları için çok
+                    tecrübeli yaratıklardır. Kanın kutsallığına inanırlar. Kan ile beslenerek çok çabuk iyileşirler.</p>
+            </div>
 
-        <div class="col-lg-4">
-            <h2>Alfa Kurtadam</h2>
+            <div class="col-lg-4">
+                <h2>Alfa Kurtadam</h2>
 
-            <p>Alfalar gelişmiş bir hiyerarşi bilincine sahiptirler. Alfa seviye bir kurtadam karşısında hayatta kalmaya
-                çalışmak aptallıktır. İnsanların koruyucuları ve en sadık dostlarıdırlar.</p>
-        </div>
+                <p>Alfalar gelişmiş bir hiyerarşi bilincine sahiptirler. Alfa seviye bir kurtadam karşısında hayatta
+                    kalmaya
+                    çalışmak aptallıktır. İnsanların koruyucuları ve en sadık dostlarıdırlar.</p>
+            </div>
 
-        <div class="col-lg-4">
-            <h2>Hemen Kayıt Ol</h2>
-            <table>
-                <form action="{% url 'registration_register' %}" method="post">
-                    {% csrf_token %}
-                    {% for item in form_registration %}
+            <div class="col-lg-4">
+                <h2>Hemen Kayıt Ol</h2>
+                <table>
+                    <form action="{% url 'registration_register' %}" method="post">
+                        {% csrf_token %}
+                        {% for item in form_registration %}
+                            <tr>
+                                <td><b>{{ item.label }}</b></td>
+                                <td>{{ item }}</td>
+                            </tr>
+                        {% endfor %}
                         <tr>
-                            <td><b>{{ item.label }}</b></td>
-                            <td>{{ item }}</td>
+                            <td></td>
+                            <td><br/><br/><input class="btn btn-success" type="submit"
+                                                 value="Doğrulama mailini gönder"/>
+                            </td>
                         </tr>
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td><br/><br/><input class="btn btn-success" type="submit" value="Doğrulama mailini gönder"/>
-                        </td>
-                    </tr>
-            </table>
-            </form>
-        </div>
+                </table>
+                </form>
+            </div>
+
+        {% endblock content %}
     </div>
 
     <hr>
