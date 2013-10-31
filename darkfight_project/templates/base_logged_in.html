@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
     <style>
         body {
-            padding-top: 50px;
+            padding-top: 60px;
             padding-bottom: 20px;
         }
     </style>
@@ -35,30 +35,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">darkFight</a>
+            <a class="navbar-brand" href="{% url 'base_landing' %}">darkFight</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Inbox</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-header">Kullanıcı İşlemleri</li>
-                <li><a href="{% url 'auth_password_change' %}">Şifre Değiştir</a></li>
-                <li class="divider"></li>
-                <li><a href="{% url 'auth_logout' %}">Oturumu Kapat</a></li>
-              </ul>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">Kullanıcı İşlemleri</li>
+                    <li><a href="{% url 'auth_password_change' %}">Şifre Değiştir</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'auth_logout' %}">Oturumu Kapat</a></li>
+                </ul>
             </li>
-          </ul>
+        </ul>
         <!--/.navbar-collapse -->
-    </div>
-</div>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <div class="container">
-        <h1>Savaşa Hazır Ol!</h1>
-
-        <p>Şu sözü edilen kadim Vampir Lordu ya da Korkusuz Alfa Kurtadam sen olabilir misin?</p>
     </div>
 </div>
 
@@ -66,38 +56,39 @@
     <!-- Example row of columns -->
     <div class="row">
 
-        <div class="col-lg-4">
-            <h2>Vampir Lordu</h2>
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
 
-            <p>Kana susamış bir vahşidir. İnsanların kanını içerek hayatta kalır. Uzun yıllar yaşadıkları için çok
-                tecrübeli yaratıklardır. Kanın kutsallığına inanırlar. Kan ile beslenerek çok çabuk iyileşirler.</p>
+            {% block jumbotron %}
+                <div class="jumbotron">
+                    <h1>Savaş, yaşam gayemiz</h1>
+
+                    <p>Bu savaş, kan kokusunun yükselip, karanlığın hüküm sürdüğü bir dünyada... Hangi tarafta olduğun,
+                        savaşın kaderini belirleyebilir.</p>
+                </div>
+
+            {% endblock jumbotron %}
+            <div class="row">
+                <div class="col-lg-12">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
         </div>
 
-        <div class="col-lg-4">
-            <h2>Alfa Kurtadam</h2>
-
-            <p>Alfalar gelişmiş bir hiyerarşi bilincine sahiptirler. Alfa seviye bir kurtadam karşısında hayatta kalmaya
-                çalışmak aptallıktır. İnsanların koruyucuları ve en sadık dostlarıdırlar.</p>
-        </div>
-
-        <div class="col-lg-4">
-            <h2>Hemen Kayıt Ol</h2>
-            <table>
-                <form action="{% url 'registration_register' %}" method="post">
-                    {% csrf_token %}
-                    {% for item in form_registration %}
-                        <tr>
-                            <td><b>{{ item.label }}</b></td>
-                            <td>{{ item }}</td>
-                        </tr>
-                    {% endfor %}
-                    <tr>
-                        <td></td>
-                        <td><br/><br/><input class="btn btn-success" type="submit" value="Doğrulama mailini gönder"/>
-                        </td>
-                    </tr>
-            </table>
-            </form>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="list-group">
+                <a class="list-group-item" href="{% url 'char_profile' user.username %}">Karakter</a>
+                <a class="list-group-item" href="#">Ev</a>
+                <a class="list-group-item" href="#">Konsey</a>
+                <a class="list-group-item" href="#">Şehir</a>
+                <a class="list-group-item" href="#">Görev</a>
+                <a class="list-group-item" href="#">Alışveriş</a>
+                <a class="list-group-item" href="#">Mesaj Kutusu</a>
+                <a class="list-group-item" href="#">Arena</a>
+            </div>
         </div>
     </div>
 

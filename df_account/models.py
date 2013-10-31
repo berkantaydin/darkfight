@@ -5,7 +5,7 @@ from registration.signals import user_registered
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User, unique=True)
     race = models.CharField(max_length=1, choices=settings.RACE_CHOICES)
 
     exp = models.PositiveIntegerField(default=1)
@@ -33,6 +33,22 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return unicode(self.user)
+
+    def get_attack(self):
+        if self.race == 'v':
+            return (self.level + self.attack_point) * 3
+        if self.race == 'w':
+            return (self.level + self.attack_point) * 2
+
+    def get_shield(self):
+        if self.race == 'v':
+            return (self.level + self.shield_point) * 2
+        if self.race == 'w':
+            return (self.level + self.shield_point) * 3
+
+
+
+
 
 
 def user_registered_callback(sender, user, request, **kwargs):

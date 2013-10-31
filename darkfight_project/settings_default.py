@@ -149,7 +149,9 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'registration',
+    'df_base',
     'df_account',
+    'df_char',
 )
 
 AUTH_PROFILE_MODULE = "df_account.Profile"

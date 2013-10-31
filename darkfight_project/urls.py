@@ -20,6 +20,7 @@ urlpatterns = patterns('',
                        url(r'^admin/', include(admin.site.urls)),
                        (r'^accounts/', include('df_account.urls')),
                        (r'^$', include('df_base.urls')),
+                       (r'', include('df_char.urls')),
 )
 
 if settings.DEBUG:
