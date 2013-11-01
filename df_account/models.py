@@ -46,9 +46,11 @@ class UserProfile(models.Model):
         if self.race == 'w':
             return (self.level + self.shield_point) * 3
 
+    def get_energy(self):
+        return self.energy_now
 
-
-
+    def get_stamina(self):
+        return self.stamina_now
 
 
 def user_registered_callback(sender, user, request, **kwargs):

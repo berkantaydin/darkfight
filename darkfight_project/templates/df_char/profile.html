@@ -1,0 +1,80 @@
+{% extends "base_logged_in.html" %}
+
+{% block jumbotron %}{% endblock jumbotron %}
+
+{% block content %}
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">{{ profile.get_fullname }}</div>
+            <table class="table">
+                <tr>
+                    <td>Saldırı</td>
+                    <td>{{ profile.attack_point }}</td>
+                </tr>
+                <tr>
+                    <td>Savunma</td>
+                    <td>{{ profile.shield_point }}</td>
+                </tr>
+                <tr>
+                    <td>Can</td>
+                    <td>{{ profile.health_point }}</td>
+                </tr>
+                <tr>
+                    <td>Enerji</td>
+                    <td>{{ profile.energy_point }}</td>
+                </tr>
+                <tr>
+                    <td>Stamina</td>
+                    <td>{{ profile.stamina_point }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Yetenek Puanları</div>
+            <table class="table">
+                <tr>
+                    <td>Saldırı</td>
+                    <td>{{ profile.attack_point }}</td>
+                </tr>
+                <tr>
+                    <td>Savunma</td>
+                    <td>{{ profile.shield_point }}</td>
+                </tr>
+                <tr>
+                    <td>Can</td>
+                    <td>{{ profile.health_point }}</td>
+                </tr>
+                <tr>
+                    <td>Enerji</td>
+                    <td>{{ profile.energy_point }}</td>
+                </tr>
+                <tr>
+                    <td>Stamina</td>
+                    <td>{{ profile.stamina_point }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Güç</div>
+            <table class="table">
+                <tr>
+                    <td>Saldırı</td>
+                    <td>{{ profile.get_attack }}</td>
+                </tr>
+                <tr>
+                    <td>Savunma</td>
+                    <td>{{ profile.get_shield }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock content %}
