@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'df_base',
     'df_account',
     'df_char',
+    'df_family',
 )
 
 AUTH_PROFILE_MODULE = "df_account.Profile"

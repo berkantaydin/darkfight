@@ -3,30 +3,43 @@
 {% block jumbotron %}{% endblock jumbotron %}
 
 {% block content %}
+    {% if profile.unused_point > 0 %}
+        PUAN VAR
+    {% endif %}
     <div class="col-lg-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">{{ profile.get_fullname }}</div>
+            <div class="panel-heading">Künye</div>
             <table class="table">
                 <tr>
-                    <td>Saldırı</td>
-                    <td>{{ profile.attack_point }}</td>
+                    <td>İsim</td>
+                    <td>{{ profile.first_name }}</td>
                 </tr>
                 <tr>
-                    <td>Savunma</td>
-                    <td>{{ profile.shield_point }}</td>
+                    <td>Aile</td>
+                    <td>{{ profile.last_name }}</td>
+                </tr>
+                {% comment %}
+                <tr>
+                    <td>Konsey</td>
+                    <td>{{ profile.family }}</td>
+                </tr>
+                {% endcomment %}
+                <tr>
+                    <td>Tecrübe</td>
+                    <td>{{ profile.exp }} / {{ profile.exp_need_for_next_level }}</td>
                 </tr>
                 <tr>
-                    <td>Can</td>
-                    <td>{{ profile.health_point }}</td>
+                    <td>Kıdem</td>
+                    <td>{{ profile.level }}</td>
                 </tr>
                 <tr>
-                    <td>Enerji</td>
-                    <td>{{ profile.energy_point }}</td>
+                    <td>Altın</td>
+                    <td>{{ profile.gold }}</td>
                 </tr>
                 <tr>
-                    <td>Stamina</td>
-                    <td>{{ profile.stamina_point }}</td>
+                    <td>Kara Totem</td>
+                    <td>{{ profile.darktotem }}</td>
                 </tr>
             </table>
         </div>
@@ -38,6 +51,10 @@
             <div class="panel-heading">Yetenek Puanları</div>
             <table class="table">
                 <tr>
+                    <td>Kullanılmayan Puanlar</td>
+                    <td>{{ profile.unused_point }}</td>
+                </tr>
+                <tr>
                     <td>Saldırı</td>
                     <td>{{ profile.attack_point }}</td>
                 </tr>
@@ -46,7 +63,7 @@
                     <td>{{ profile.shield_point }}</td>
                 </tr>
                 <tr>
-                    <td>Can</td>
+                    <td>Sağlık</td>
                     <td>{{ profile.health_point }}</td>
                 </tr>
                 <tr>
@@ -64,8 +81,20 @@
     <div class="col-lg-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
-            <div class="panel-heading">Güç</div>
+            <div class="panel-heading">Bünye</div>
             <table class="table">
+                <tr>
+                    <td>Enerji</td>
+                    <td>{{ profile.energy_now }} / {{ profile.get_energy }}</td>
+                </tr>
+                <tr>
+                    <td>Stamina</td>
+                    <td>{{ profile.stamina_now }} / {{ profile.get_stamina }}</td>
+                </tr>
+                <tr>
+                    <td>Sağlık</td>
+                    <td>{{ profile.health_now }} / {{ profile.get_health }}</td>
+                </tr>
                 <tr>
                     <td>Saldırı</td>
                     <td>{{ profile.get_attack }}</td>
