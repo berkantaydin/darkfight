@@ -3,9 +3,6 @@
 {% block jumbotron %}{% endblock jumbotron %}
 
 {% block content %}
-    {% if profile.unused_point > 0 %}
-        PUAN VAR
-    {% endif %}
     <div class="col-lg-4">
         <div class="panel panel-default">
             <!-- Default panel contents -->
@@ -51,28 +48,46 @@
             <div class="panel-heading">Yetenek Puanları</div>
             <table class="table">
                 <tr>
-                    <td>Kullanılmayan Puanlar</td>
-                    <td>{{ profile.unused_point }}</td>
-                </tr>
-                <tr>
                     <td>Saldırı</td>
                     <td>{{ profile.attack_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td><a href="{% url char_use_point 'attack' %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td>Savunma</td>
                     <td>{{ profile.shield_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td><a href="{% url char_use_point 'shield' %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td>Sağlık</td>
                     <td>{{ profile.health_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td><a href="{% url char_use_point 'health' %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td>Enerji</td>
                     <td>{{ profile.energy_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td><a href="{% url char_use_point 'energy' %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+                    {% endif %}
                 </tr>
                 <tr>
                     <td>Stamina</td>
                     <td>{{ profile.stamina_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td><a href="{% url char_use_point 'stamina' %}"><span class="glyphicon glyphicon-plus"></span></a></td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>Dağıtılmamış Puan</td>
+                    <td>{{ profile.unused_point }}</td>
+                    {% if profile.unused_point > 0 %}
+                        <td></td>
+                    {% endif %}
                 </tr>
             </table>
         </div>
