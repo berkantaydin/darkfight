@@ -197,3 +197,7 @@ RACE_CHOICES = (
     ('v', 'Vampir Lordu'),
     ('w', 'Alfa Kurtadam'),
 )
+
+FIXTURE_DIRS = (
+    os.path.join(PROJECT_ROOT, "fixtures"),
+)
