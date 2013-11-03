@@ -29,7 +29,7 @@ def use_point(request, field):
             profile.attack_point += 1
         if field == 'shield':
             profile.shield_point += 1
-        if field in ('energy', 'stamina', 'health','attach','shield'):
+        if field in ('energy', 'stamina', 'health', 'attack', 'shield'):
             profile.unused_point -= 1
             profile.save()
             messages.success(request, 'Puan Başarıyla Kullanıldı.')

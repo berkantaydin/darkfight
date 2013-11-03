@@ -4,6 +4,7 @@ from django.conf import settings
 from registration.signals import user_registered
 from df_char.models import FirstName, LastName
 from df_family.models import Family
+from df_property.models import Property
 
 
 class UserProfile(models.Model):
@@ -73,3 +74,9 @@ def user_registered_callback(sender, user, request, **kwargs):
 
 
 user_registered.connect(user_registered_callback)
+
+
+class UserProperties(models.Model):
+    user = models.OneToOneField(User)
+    property = models.ForeignKey(Property)
+    piece = models.PositiveIntegerField(default=1)
